@@ -1,15 +1,19 @@
 package cr.ac.ucr.sa.rp.examen2.domain;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+/**
+ * @Author: Jesús Gutiérrez Matarrita
+ * @Author: Diego Rodríguez Fallas
+ * This is a class to carry out unit testing
+ * */
 
 @SpringBootTest
 public class OrdenTest {
@@ -17,6 +21,10 @@ public class OrdenTest {
     Orden testOrder = new Orden();
     float totalDue;
 
+    /*
+    * This is for setting up the classes and instances
+    * No params are required
+    * */
     @BeforeEach
     public void setup() {
 
@@ -43,10 +51,15 @@ public class OrdenTest {
 
     }
 
+    /*
+     * No params
+     * This method checks that the bill's due amount is what we expect
+     * */
     @Test
     public void getTotalBillFromOrder() {
         List<ItemOrden> items = testOrder.getItemes();
         Assertions.assertEquals(2,items.size());
+        //multiplies the price per unit * quantity and adds it to the variable totalDue
         for (ItemOrden item : items) {
             totalDue += item.getPrecioUnitario() * item.getCantidad();
         }
